@@ -2,58 +2,74 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: Back End Demonstration API
-  description: A simple Blog API
+  description: A simple Dog API
   contact:
     name: lau hok lung
-    email: xx@xx.com
+    email: 217011770@stu.vtc.edu.hk
   license: 
-  name: Apache 2.0
-  url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 servers:
   - url: 'https://DogAPI.hllaucode.repl.co/'
-  description: Development Server
+    description: Development Server
 tags:
   - name: Users
     description: API endpoints for user management
-  - name: Articles
-    description: Access and perform CRUD operations on blog entries.
+  - name: Dogs
+    description: Access and perform CRUD operations on dog entries.
 
 paths:
-  /articles/{id}:
+  /dogs:
+    post:
+      tags:
+        - Dogs
+      description:
+        Create a new dog.
+      requestBody:
+        description: All new dog data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./dogs.json#/definitions/dogs
+      responses:
+        '201':
+          description: Dogs created
+  /dogs/{id}:
     parameters:
       - in: path
         name: id
         schema:
           type: integer
         required: true
-        description: Numeric id of the article
+        description: Numeric id of the dog
     get:
       tags:
-        - Articles
+        - Dogs
       description:
-        Get article by id.
+        Get dog by id.
       responses:
         '200':
-          description: View of an article record
+          description: View of an dog record
         '404':
-          description: Article was not found in the DB
+          description: Dog was not found in the DB
     put:
       tags:
-        - Articles
+        - Dogs
       description:
-        Update article by ID.
+        Update dog by ID.
       responses:
         '200':
           description: Update confirmation and link to record.
         '404':
-          description: Article was not found in the DB.
+          description: Dog was not found in the DB.
     delete:
       tags:
-        - Articles
+        - Dogs
       description:
-        Delete article by ID.
+        Delete dog by ID.
       responses:
         '200':
           description: Delete confirmation.
         '404':
-          description: User was not found in the DB.
+          description: Dog was not found in the DB.
