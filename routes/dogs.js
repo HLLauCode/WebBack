@@ -3,6 +3,7 @@ const bodyParser = require('koa-bodyparser')
 const model = require('../models/dogs')
 const {validateDog} = require('../controllers/validation')
 const router = Router({prefix: '/api/v1/dogs'})
+const can = require('../permissions/dogs')
 
 router.get('/', getAll)
 router.post('/', bodyParser(), validateDog, createDog)
@@ -26,6 +27,7 @@ async function getById(ctx) {
 }
 
 async function createDog(ctx) {
+  const permission = can.create(ctx.state.admin)
   const body = ctx.request.body
   let result = await model.add(body)
   if (result) {
@@ -38,6 +40,7 @@ async function createDog(ctx) {
 }
 
 async function updateDog(ctx) {
+  const permission = can.update(ctx.state.admin)
   let id = ctx.params.id
   let body = ctx.request.body
   let result = await model.updateById(id, body)
@@ -57,6 +60,7 @@ async function updateDog(ctx) {
 }
 
 async function deleteDog(ctx) {
+  const permission = can.delete(ctx.state.admin)
   let id = ctx.params.id
   let result = await model.deleteById(id)
   if (result) {
