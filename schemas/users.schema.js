@@ -16,6 +16,11 @@ module.exports = {
     "password": {
       "description": "Password of user",
       "type": "string"
+    },
+    "role":{
+      "description":"role of the user",
+      "type":"string",
+      "default": "user"
     }
   },
   "required": ["email", "username", "password"]
