@@ -14,11 +14,48 @@ servers:
     description: Development Server
 tags:
   - name: Users
-    description: API endpoints for user management
+    description: API endpoints for user management.
   - name: Dogs
     description: Access and perform CRUD operations on dog entries.
 
 paths:
+  /users:
+    post:
+      tags:
+        - Users
+      description:
+        Create a new user.
+      requestBody:
+        description: All new user data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./users.json#/definitions/users
+      responses:
+        '201':
+          description: User created.
+        '400':
+          description: User created fail, the username/email has already been used.
+    get:
+      tags:
+        - Users
+      description:
+        Get user information.
+      responses:
+        '200':
+          description: View of users information.
+        '403':
+          description: No permission.
+  /privates:
+    get:
+      tags:
+        - Privates
+      description:
+        Get privage page.
+      responses:
+        '200':
+          description: View of private page.
   /dogs:
     post:
       tags:
@@ -34,7 +71,11 @@ paths:
               $ref: ./dogs.json#/definitions/dogs
       responses:
         '201':
-          description: Dogs created
+          description: Dogs created.
+        '400':
+          description: User not logged in.
+        '403':
+          description: User do not have the permission.
   /dogs/{id}:
     parameters:
       - in: path
@@ -42,17 +83,17 @@ paths:
         schema:
           type: integer
         required: true
-        description: Numeric id of the dog
+        description: Numeric id of the dog.
     get:
       tags:
         - Dogs
       description:
-        Get dog by id.
+        Get dog by ID.
       responses:
         '200':
-          description: View of an dog record
+          description: View of an dog record.
         '404':
-          description: Dog was not found in the DB
+          description: Dog was not found in the DB.
     put:
       tags:
         - Dogs
@@ -61,6 +102,10 @@ paths:
       responses:
         '200':
           description: Update confirmation and link to record.
+        '400':
+          description: User not logged in.
+        '403':
+          description: User do not have the permission.
         '404':
           description: Dog was not found in the DB.
     delete:
@@ -71,5 +116,9 @@ paths:
       responses:
         '200':
           description: Delete confirmation.
+        '400':
+          description: User not logged in.
+        '403':
+          description: User do not have the permission.
         '404':
           description: Dog was not found in the DB.
