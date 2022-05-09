@@ -22,18 +22,24 @@ module.exports = {
       "description": "Breed of the dog",
       "type": "string"
     },
+    "height": {
+      "description": "Height of the dog",
+      "type": "float",
+      "minimum": 10.0
+    },
+    "weight": {
+      "description": "Weight of the dog",
+      "type": "float",
+      "minimum": 5.0
+    },
     "imageurl": {
       "description": "URL for main image to show the dog",
       "type": "uri"
-    },
-    "status": {
-      "description": "Is the dog healthy or not",
-      "type": "boolean"
     },
     "summary": {
       "description": "A short description of the dog by the staff",
       "type": "string"
     },
   },
-  "required": ["name", "gender", "age", "breed", "imageurl" ,"status"]
+  "required": ["name", "gender", "age", "breed", "height", "weight", "imageurl"]
 }
