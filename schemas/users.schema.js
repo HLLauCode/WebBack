@@ -16,11 +16,7 @@ module.exports = {
     "password": {
       "description": "Password of user",
       "type": "string"
-    },
-    "code": {
-      "description": "Sige up code of the user (optional)",
-      "type": "integer"
-    },
+    }
   },
   "required": ["email", "username", "password"]
 }
