@@ -1,32 +1,35 @@
 {
   "$schema":"http://json-schema.org/draft-04/schema#",
   "definitions":{
-    "id":"/users",
-    "title":"User",
-    "description":"A user registered on the website",
-    "type":"object",
-    "properties":{
-      "email":{
-        "description":"Email address of user",
-        "type":"string"
+    "users": {
+      "id":"/users",
+      "title":"User",
+      "description":"A user registered on the website",
+      "type":"object",
+      "properties":{
+        "email":{
+          "description":"Email address of user",
+          "type":"string"
+        },
+        "username":{
+          "description":"Username of user",
+          "type":"string"
+        },
+        "password":{
+          "description":"Password of user",
+          "type":"string"
+        },
+        "role":{
+          "description":"role of the user",
+          "type":"string",
+          "default": "user"
+        }
       },
-      "username":{
-        "description":"Username of user",
-        "type":"string"
-      },
-      "password":{
-        "description":"Password of user",
-        "type":"string"
-      },
-      "code":{
-        "description":"Sige up code of the user (optional)",
-        "type":"integer"
-      }
-    },
-    "required":[
-      "email",
-      "username",
-      "password"
-    ]
+      "required":[
+        "email",
+        "username",
+        "password"
+      ]
+    }
   }
 }
