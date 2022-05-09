@@ -21,6 +21,16 @@
           "type":"float",
           "minimum":0.1
         },
+        "height":{
+          "description":"Height of the dog",
+          "type":"float",
+          "minimum":10.0
+        },
+        "weight":{
+          "description":"Weight of the dog",
+          "type":"float",
+          "minimum":5.0
+        },
         "breed":{
           "description":"Breed of the dog",
           "type":"string"
@@ -28,10 +38,6 @@
         "imageurl":{
           "description":"URL for main image to show the dog",
           "type":"uri"
-        },
-        "status":{
-          "description":"Is the dog healthy or not",
-          "type":"boolean"
         },
         "summary":{
           "description":"A short description of the dog by the staff",
@@ -43,8 +49,9 @@
         "gender",
         "age",
         "breed",
-        "imageurl",
-        "status"
+        "height",
+        "weight",
+        "imageurl"
       ]
     }
   }
