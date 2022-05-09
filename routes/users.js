@@ -17,6 +17,9 @@ async function getAll(ctx) {
     const result = await model.getAll()
     if(result.length) {
       ctx.body = result
+      ctx.status = 200
+    } else {
+      ctx.status = 403
     }
   }
 }
