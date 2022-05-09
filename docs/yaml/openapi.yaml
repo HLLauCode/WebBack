@@ -76,6 +76,14 @@ paths:
           description: User not logged in.
         '403':
           description: User do not have the permission.
+    get:
+      tags:
+        - Dogs
+      description:
+        Get all dogs.
+      responses:
+        '200':
+          description: View of all dogs record.
   /dogs/{id}:
     parameters:
       - in: path
