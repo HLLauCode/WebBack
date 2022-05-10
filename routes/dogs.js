@@ -16,7 +16,7 @@ async function getAll (ctx, next) {
   const dogs = await model.getAll()
   if (dogs.length) {
     ctx.body = dogs
-    ctx.status = 
+    ctx.status = 200
   }
 }
 
@@ -55,15 +55,13 @@ async function updateDog (ctx) {
     const body = ctx.request.body
     const result = await model.updateById(id, body)
     if (result) {
-      ctx.status = 200
       ctx.body = {
-        status: 'success',
+        status: 200,
         data: body
       }
     } else {
-      ctx.status = 404
       ctx.body = {
-        status: 'error',
+        status: 404,
         message: 'That dog does not exist.'
       }
     }
@@ -78,9 +76,8 @@ async function deleteDog (ctx) {
     const id = ctx.params.id
     const result = await model.deleteById(id)
     if (result) {
-      ctx.status = 200
       ctx.body = {
-        status: 'success',
+        status: 200,
         message: 'deleted'
       }
     }
